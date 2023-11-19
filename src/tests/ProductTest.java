@@ -13,7 +13,7 @@ class ProductTest {
     @DisplayName("set weight test")
     void setWeightTest() {
         double weight = 64;
-        Product pac = new Product(weight, null);
+        Product pac = new Product(weight, null, null);
         assertEquals(weight, pac.getWeight());
         pac.setWeight(weight);
         assertEquals(weight, pac.getWeight());
@@ -23,7 +23,7 @@ class ProductTest {
     @DisplayName("get weight test")
     void getWeightTest() {
         double weight = 53.2;
-        Product product = new Product(weight, null);
+        Product product = new Product(weight, null, null);
         assertEquals(weight, product.getWeight());
     }
 
@@ -31,10 +31,21 @@ class ProductTest {
     @DisplayName("strategy set for product")
     void setStrategyTest() {
         StandardStrategy s = new StandardStrategy();
-        Product product = new Product(12.2, s);
+        Product product = new Product(12.2, s, null);
         assertEquals(s, product.getTransferStrategy());
         ExpressStrategy exp = new ExpressStrategy();
         product.setTransferStrategy(exp);
         assertEquals(exp, product.getTransferStrategy());
+    }
+
+    @Test
+    @DisplayName("state for product")
+    void setStateTest() {
+        TransitState state = new TransitState();
+        Product product = new Product(10, null, state);
+        assertEquals(state, product.getState());
+        DeliveredState st = new DeliveredState();
+        product.setState(st);
+        assertEquals(st, product.getState());
     }
 }
