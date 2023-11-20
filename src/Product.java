@@ -1,7 +1,7 @@
 package src;
 
+import src.states.StartState;
 import src.states.State;
-import src.states.TransitState;
 import src.strategies.Strategy;
 
 public class Product {
@@ -13,7 +13,7 @@ public class Product {
     Strategy transferStrategy;
 
     private Product() {
-        this.state = new TransitState(this);
+        this.state = new StartState(this);
         this.transferStrategy = null;
         this.weight = 0;
     }
@@ -49,8 +49,16 @@ public class Product {
         this.weight = weight;
     }
 
-    public void changeState() {
-        this.state.done();
+    public void changeState(State newState) {
+        this.state.done(newState);
+    }
+
+    public boolean isFinished() {
+        return this.state.isFinished();
+    }
+
+    public double getCost() {
+        return this.transferStrategy.getCost(this.weight);
     }
 
 }
