@@ -1,5 +1,7 @@
 package src.states;
 
 public interface State {
-    void done();
+    void done(State newState);
+
+    boolean isFinished();
 }
