@@ -1,12 +1,12 @@
 package src;
 
-import src.states.DeliveredState;
 import src.states.StartState;
 import src.states.State;
 import src.strategies.Strategy;
 
 public class Product {
     double weight;
+    boolean delivered;
     private static Product instance = null;
 
     State state;
@@ -17,6 +17,7 @@ public class Product {
         this.state = new StartState(this);
         this.transferStrategy = null;
         this.weight = 0;
+        this.delivered = false;
     }
 
     public static Product getInstance() {
@@ -58,8 +59,12 @@ public class Product {
         this.state.deliver_product();
     }
 
+    public void setDelivered(boolean delivered) {
+        this.delivered = delivered;
+    }
+
     public boolean isDelivered() {
-        return this.state instanceof DeliveredState;
+        return delivered;
     }
 
     public double getCost() {
