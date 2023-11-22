@@ -8,8 +8,7 @@ import src.states.DeliveredState;
 import src.strategies.ExpressStrategy;
 import src.strategies.StandardStrategy;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
     @Test
@@ -39,7 +38,9 @@ class ProductTest {
         Product product = Product.getInstance();
         product.transfer_product();
         assertInstanceOf(TransitState.class, product.getState());
+        assertFalse(product.isDelivered());
         product.deliver_product();
         assertInstanceOf(DeliveredState.class, product.getState());
+        assertTrue(product.isDelivered());
     }
 }
