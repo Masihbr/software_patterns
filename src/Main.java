@@ -1,8 +1,5 @@
 package src;
 
-import src.states.DeliveredState;
-import src.states.State;
-import src.states.TransitState;
 import src.strategies.ExpressStrategy;
 import src.strategies.StandardStrategy;
 import src.strategies.Strategy;
@@ -28,13 +25,10 @@ public class Main {
                 strategyObj = new ExpressStrategy();
             }
             product.setTransferStrategy(strategyObj);
-            State stateObj = null;
             if (state == 1) {
-                stateObj = new TransitState(product);
-                product.changeState(stateObj);
+                product.transfer_product();
             } else if (state == 2) {
-                stateObj = new DeliveredState();
-                product.changeState(stateObj);
+                product.deliver_product();
             }
         } while (!product.isFinished());
         System.out.println("The total cost of transferring the product is:");
