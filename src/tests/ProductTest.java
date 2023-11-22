@@ -3,13 +3,10 @@ package src.tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import src.Product;
-import src.states.DeliveredState;
-import src.states.State;
-import src.states.TransitState;
 import src.strategies.ExpressStrategy;
 import src.strategies.StandardStrategy;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ProductTest {
     @Test
