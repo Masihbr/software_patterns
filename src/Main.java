@@ -13,6 +13,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         double weight = scanner.nextDouble();
         product.setWeight(weight);
+        product.transfer_product();
         do {
             System.out.println("Please select a strategy for transferring the product: (1 for standard, 2 for express):");
             int strategy = scanner.nextInt();
