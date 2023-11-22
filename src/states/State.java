@@ -1,7 +1,17 @@
 package src.states;
 
-public interface State {
-    void done(State newState);
+import src.Product;
 
-    boolean isFinished();
+public abstract class State {
+    protected Product product;
+
+    public State(Product product) {
+        this.product = product;
+    }
+
+    public abstract void transfer_product();
+
+    public abstract void deliver_product();
+
+    public abstract boolean isFinished();
 }

@@ -1,8 +1,21 @@
 package src.states;
 
-public class DeliveredState implements State {
+import src.Product;
+
+public class DeliveredState extends State {
+    public DeliveredState(Product product) {
+        super(product);
+    }
+
     @Override
-    public void done(State newState) {System.out.println("we delivered this product already; there is no other state");}
+    public void transfer_product() {
+        System.out.println("The product has been delivered.");
+    }
+
+    @Override
+    public void deliver_product() {
+        System.out.println("The product has been delivered.");
+    }
 
     @Override
     public boolean isFinished() {
