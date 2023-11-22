@@ -37,11 +37,9 @@ class ProductTest {
     @DisplayName("state for product")
     void setStateTest() {
         Product product = Product.getInstance();
-        State state = new TransitState(product);
-        product.changeState(state);
-        assertEquals(state, product.getState());
-        state = new DeliveredState();
-        product.changeState(state);
-        assertEquals(state, product.getState());
+        product.transfer_product();
+        assertEquals(product.getTransitState(), product.getState());
+        product.deliver_product();
+        assertEquals(product.getDeliveredState(), product.getState());
     }
 }
