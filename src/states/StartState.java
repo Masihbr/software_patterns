@@ -2,21 +2,20 @@ package src.states;
 
 import src.Product;
 
-public class StartState implements State{
-    Product product;
+public class StartState extends State {
 
     public StartState(Product product) {
-        this.product = product;
+        super(product);
     }
 
     @Override
-    public void done(State newState) {
-        System.out.println("in transit");
-        this.product.setState(newState);
+    public void transfer_product() {
+        this.product.setState(new TransitState(this.product));
+        System.out.println("The product is in transit.");
     }
 
     @Override
-    public boolean isFinished() {
-        return false;
+    public void deliver_product() {
+        System.out.println("The product requires to be transferred first.");
     }
 }

@@ -3,9 +3,8 @@ package src.tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import src.Product;
-import src.states.DeliveredState;
-import src.states.State;
 import src.states.TransitState;
+import src.states.DeliveredState;
 import src.strategies.ExpressStrategy;
 import src.strategies.StandardStrategy;
 
@@ -37,11 +36,11 @@ class ProductTest {
     @DisplayName("state for product")
     void setStateTest() {
         Product product = Product.getInstance();
-        State state = new TransitState(product);
-        product.changeState(state);
-        assertEquals(state, product.getState());
-        state = new DeliveredState();
-        product.changeState(state);
-        assertEquals(state, product.getState());
+        product.transfer_product();
+        assertInstanceOf(TransitState.class, product.getState());
+        assertFalse(product.isDelivered());
+        product.deliver_product();
+        assertInstanceOf(DeliveredState.class, product.getState());
+        assertTrue(product.isDelivered());
     }
 }

@@ -6,6 +6,7 @@ import src.strategies.Strategy;
 
 public class Product {
     double weight;
+    boolean delivered;
     private static Product instance = null;
 
     State state;
@@ -16,6 +17,7 @@ public class Product {
         this.state = new StartState(this);
         this.transferStrategy = null;
         this.weight = 0;
+        this.delivered = false;
     }
 
     public static Product getInstance() {
@@ -49,16 +51,23 @@ public class Product {
         this.weight = weight;
     }
 
-    public void changeState(State newState) {
-        this.state.done(newState);
+    public void transfer_product() {
+        this.state.transfer_product();
     }
 
-    public boolean isFinished() {
-        return this.state.isFinished();
+    public void deliver_product() {
+        this.state.deliver_product();
+    }
+
+    public void setDelivered(boolean delivered) {
+        this.delivered = delivered;
+    }
+
+    public boolean isDelivered() {
+        return delivered;
     }
 
     public double getCost() {
         return this.transferStrategy.getCost(this.weight);
     }
-
 }

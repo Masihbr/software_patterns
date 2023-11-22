@@ -2,26 +2,20 @@ package src.states;
 
 import src.Product;
 
-public class TransitState implements State {
-    Product product;
-
+public class TransitState extends State {
     public TransitState(Product product) {
-        this.product = product;
+        super(product);
     }
 
     @Override
-    public void done(State newState) {
-        if (newState instanceof DeliveredState) {
-            System.out.println("delivered");
-            product.setState(newState);
-        } else {
-            System.out.println("in transit");
-        }
+    public void transfer_product() {
+        System.out.println("The product is in transit.");
     }
 
     @Override
-    public boolean isFinished() {
-        return false;
+    public void deliver_product() {
+        this.product.setState(new DeliveredState(this.product));
+        this.product.setDelivered(true);
+        System.out.println("The product was delivered.");
     }
-
 }
