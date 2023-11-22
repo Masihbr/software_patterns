@@ -16,9 +16,4 @@ public class DeliveredState extends State {
     public void deliver_product() {
         System.out.println("The product has been delivered.");
     }
-
-    @Override
-    public boolean isFinished() {
-        return true;
-    }
 }

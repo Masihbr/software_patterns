@@ -30,7 +30,7 @@ public class Main {
             } else if (state == 2) {
                 product.deliver_product();
             }
-        } while (!product.isFinished());
+        } while (!product.isDelivered());
         System.out.println("The total cost of transferring the product is:");
         System.out.println(product.getCost());
     }

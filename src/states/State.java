@@ -12,6 +12,4 @@ public abstract class State {
     public abstract void transfer_product();
 
     public abstract void deliver_product();
-
-    public abstract boolean isFinished();
 }

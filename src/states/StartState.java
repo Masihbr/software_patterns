@@ -18,9 +18,4 @@ public class StartState extends State {
     public void deliver_product() {
         System.out.println("The product requires to be transferred first.");
     }
-
-    @Override
-    public boolean isFinished() {
-        return false;
-    }
 }

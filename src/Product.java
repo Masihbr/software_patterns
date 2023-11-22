@@ -77,8 +77,8 @@ public class Product {
         return transitState;
     }
 
-    public boolean isFinished() {
-        return this.state.isFinished();
+    public boolean isDelivered() {
+        return this.state == this.deliveredState;
     }
 
     public double getCost() {
