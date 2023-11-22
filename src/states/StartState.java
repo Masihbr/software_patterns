@@ -10,7 +10,7 @@ public class StartState extends State {
 
     @Override
     public void transfer_product() {
-        this.product.setState(this.product.getTransitState());
+        this.product.setState(new TransitState(this.product));
         System.out.println("The product is in transit.");
     }
 

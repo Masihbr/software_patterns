@@ -3,25 +3,18 @@ package src;
 import src.states.DeliveredState;
 import src.states.StartState;
 import src.states.State;
-import src.states.TransitState;
 import src.strategies.Strategy;
 
 public class Product {
     double weight;
     private static Product instance = null;
 
-    State startState;
-    State deliveredState;
-    State transitState;
     State state;
 
     Strategy transferStrategy;
 
     private Product() {
-        this.deliveredState = new DeliveredState(this);
-        this.startState = new StartState(this);
-        this.transitState = new TransitState(this);
-        this.state = this.startState;
+        this.state = new StartState(this);
         this.transferStrategy = null;
         this.weight = 0;
     }
@@ -65,20 +58,8 @@ public class Product {
         this.state.deliver_product();
     }
 
-    public State getStartState() {
-        return this.startState;
-    }
-
-    public State getDeliveredState() {
-        return deliveredState;
-    }
-
-    public State getTransitState() {
-        return transitState;
-    }
-
     public boolean isDelivered() {
-        return this.state == this.deliveredState;
+        return this.state instanceof DeliveredState;
     }
 
     public double getCost() {

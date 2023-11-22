@@ -14,7 +14,7 @@ public class TransitState extends State {
 
     @Override
     public void deliver_product() {
-        this.product.setState(this.product.getDeliveredState());
+        this.product.setState(new DeliveredState(this.product));
         System.out.println("The product was delivered.");
     }
 }
