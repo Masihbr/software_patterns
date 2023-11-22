@@ -3,10 +3,13 @@ package src.tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import src.Product;
+import src.states.TransitState;
+import src.states.DeliveredState;
 import src.strategies.ExpressStrategy;
 import src.strategies.StandardStrategy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 class ProductTest {
     @Test
@@ -35,8 +38,8 @@ class ProductTest {
     void setStateTest() {
         Product product = Product.getInstance();
         product.transfer_product();
-        assertEquals(product.getTransitState(), product.getState());
+        assertInstanceOf(TransitState.class, product.getState());
         product.deliver_product();
-        assertEquals(product.getDeliveredState(), product.getState());
+        assertInstanceOf(DeliveredState.class, product.getState());
     }
 }
